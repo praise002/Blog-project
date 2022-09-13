@@ -1,0 +1,18 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        {% for field in form %}
+            {{ field.label }}
+            {{ field }}<br><br>
+        {% endfor %}
+
+        <button type="submit" name="submit">Register</button>
+        <input type="hidden" name="next" value="{% url 'home' %}">
+    </form>
+
+{% endblock content %}
